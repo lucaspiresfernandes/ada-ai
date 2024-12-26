@@ -1,6 +1,6 @@
 Ada AI is an Agent AI inspired by Neuro-sama. Her purpose is to keep the user company while they're utilizing their computer.
 
-Ada has her own memory database, and she can also Google for subjects.
+Ada has her own memory database, and she can also Google for subjects. Also, with every prompt a screenshot is sent as a follow-up to keep Ada up to date with what's going on.
 
 Some things I still wanna do are:
 
