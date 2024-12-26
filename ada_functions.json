@@ -1,0 +1,58 @@
+[
+  {
+    "name": "memorize",
+    "description": "Call this whenever you want to store a memory in your SQLite3 memories database. Please, use this whenever the user provides new information you have never seen before. The more memories you store, the merrier.",
+    "strict": true,
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "type": "string",
+          "description": "The context, situation or event to be remembered. It should be an unambiguous and descriptive string that objectively describes the context of the memory. Contexts should match the intended meaning of the memory, not the user's phrasing. Avoid vague or user-specific phrasing like \"where I went\". Instead, use standardized, unambiguous contexts that match the intended meaning of the memory to ensure consistency and to simplify retrieval later. For reinforced memorization, generate an extra context that applies the same rules as the original but is phrased in a different, original way."
+        },
+        "date": {
+          "type": "string",
+          "description": "The date associated with the memory, formatted as a ISO8601 string. If the date is not relevant in the given context, use today's date."
+        }
+      },
+      "additionalProperties": false,
+      "required": ["date", "context"]
+    }
+  },
+  {
+    "name": "retrieve_memory",
+    "description": "Call this to retrieve memories from your SQLite3 memories database. Whenever you are not sure whether you remember something, you should call this function to consult your stored memories.",
+    "strict": true,
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "type": "string",
+          "description": "A precise, objective key phrase to search in your memories. This should align with the standardized context used in the `memorize` function. The context should reflect the semantic intent behind the user's prompt but avoid ambiguous or conversational phrasing. Do not include time-related words like \"yesterday\" or \"last week\"; these should be specified in the `date` argument instead."
+        },
+        "date": {
+          "type": ["string", "null"],
+          "description": "The date associated with the memory, formatted as a ISO8601 string. Can be used to narrow the search to a specific date."
+        }
+      },
+      "additionalProperties": false,
+      "required": ["context", "date"]
+    }
+  },
+  {
+    "name": "search_the_internet",
+    "description": "Call this function whenever you want to make a search query on the internet. The return string will be an HTML of the result.",
+    "strict": true,
+    "parameters": {
+      "type": "object",
+      "required": ["query"],
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "The search query"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+]
